@@ -1,0 +1,6 @@
+"Hot Spots - Method","Self Time [%]","Self Time","Total Time","Invocations"
+"java.util.concurrent.ThreadPoolExecutor$Worker.run()","67.56256","468749.72 ms","678799.035 ms","6"
+"sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run()","32.43739","225050.946 ms","225050.942 ms","10"
+"java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run()","3.1132848E-5","0.216 ms","0.343 ms","6"
+"sun.rmi.transport.DGCImpl$1.run()","1.4125088E-5","0.098 ms","0.098 ms","4"
+"java.util.concurrent.FutureTask.run()","4.0357395E-6","0.028 ms","0.028 ms","2"

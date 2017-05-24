@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: es.deusto.spq.test.MFServerDaoTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.154 s - in es.deusto.spq.test.MFServerDaoTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.088 s - in es.deusto.spq.test.MFServerDaoTest
