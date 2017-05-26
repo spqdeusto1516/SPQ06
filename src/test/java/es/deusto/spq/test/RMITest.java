@@ -155,7 +155,7 @@ public class RMITest {
 
 	@Test
 	@PerfTest(invocations = 100, threads = 10)
-	@Required(max = 1000, average = 50)
+	@Required(max = 1000, average = 200)
 	// @Ignore
 	public void testLoadSong() throws RemoteException {
 
@@ -170,7 +170,7 @@ public class RMITest {
 
 	@Test
 	@PerfTest(invocations = 100, threads = 10)
-	@Required(max = 500, average = 50)
+	@Required(max = 500, average = 200)
 	public void testSignUp() throws Exception {
 		logger.info("Starting SignUp PerformanceTest " + iterationSignUpTest++);
 		boolean b = false;
