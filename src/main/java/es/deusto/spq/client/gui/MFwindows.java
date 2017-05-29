@@ -291,45 +291,6 @@ public class MFwindows extends JFrame implements Runnable {
 				}
 			}
 		});
-		getContentPane().add(topPanel, BorderLayout.PAGE_START);
-		getContentPane().add(scrollpane, BorderLayout.CENTER);
-
-	}
-
-	/**
-	 * Sign in action performed method
-	 *
-	 * @param e
-	 *            The action event
-	 */
-	public void signinActionPerformed(ActionEvent e) {
-		new SigninGUI(mfcon);
-		t = new Thread(this);
-		t.start();
-	}
-
-	@Override
-	public void run() {
-		Font font1 = new Font("Dialog", Font.BOLD, 14);
-		while (!mfcon.isLogin()) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		signin.setVisible(false);
-		signup.setVisible(false);
-		try {
-			ulabel = new JLabel("Hello " + mfcon.getUserName());
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ulabel.setFont(new Font("sans-serif", Font.BOLD, 21));
-		ulabel.setBounds(960, 30, 250, 25);
-		topPanel.add(ulabel);
 
 		upload = new JButton("Upload");
 		upload.setFont(font1);
@@ -340,12 +301,15 @@ public class MFwindows extends JFrame implements Runnable {
 		logout.setFont(font1);
 		logout.setBounds(960, 100, 110, 30);
 		topPanel.add(logout);
+		logout.setVisible(false);
+		upload.setVisible(false);
 
 		logout.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				t.stop();
 				mfcon.setLogin(false);
 				logout.setVisible(false);
 				ulabel.setVisible(false);
@@ -355,7 +319,7 @@ public class MFwindows extends JFrame implements Runnable {
 				getContentPane().validate();
 				getContentPane().repaint();
 				System.out.println("Bye, see you again!");
-				
+
 			}
 		});
 
@@ -413,6 +377,52 @@ public class MFwindows extends JFrame implements Runnable {
 
 		getContentPane().validate();
 		getContentPane().repaint();
+
+		getContentPane().add(topPanel, BorderLayout.PAGE_START);
+		getContentPane().add(scrollpane, BorderLayout.CENTER);
+	}
+
+	/**
+	 * Sign in action performed method
+	 *
+	 * @param e
+	 *            The action event
+	 */
+	public void signinActionPerformed(ActionEvent e) {
+		new SigninGUI(mfcon);
+		t = new Thread(this);
+		t.start();
+	}
+
+	@Override
+	public void run() {
+		Font font1 = new Font("Dialog", Font.BOLD, 14);
+		while (!mfcon.isLogin()) {
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		signin.setVisible(false);
+		signup.setVisible(false);
+		
+		try {
+			ulabel = new JLabel("Hello " + mfcon.getUserName());
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ulabel.setFont(new Font("sans-serif", Font.BOLD, 21));
+		ulabel.setBounds(900, 30, 280, 25);
+		topPanel.add(ulabel);
+		ulabel.setVisible(true);
+		logout.setVisible(true);
+		upload.setVisible(true);
+		getContentPane().validate();
+		getContentPane().repaint();
+
 	}
 
 	public void uploadActionPerformed(ActionEvent e) {
