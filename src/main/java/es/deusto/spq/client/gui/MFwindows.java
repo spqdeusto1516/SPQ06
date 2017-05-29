@@ -33,7 +33,7 @@ public class MFwindows extends JFrame implements Runnable {
 	private JLabel editlabel;
 	private JLabel ulabel;
 	private JCTextField searchBox;
-	private Thread t;
+	protected static Thread t;
 	private JScrollPane scrollpane;
 	private String DELIMITER = "#";
 	private String path;
@@ -64,6 +64,7 @@ public class MFwindows extends JFrame implements Runnable {
 		this.setVisible(true);
 		this.centreWindow();
 		this.setTitle("Free tune");
+		t = new Thread(this);
 	}
 
 	/**
@@ -309,17 +310,7 @@ public class MFwindows extends JFrame implements Runnable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				t.stop();
-				mfcon.setLogin(false);
-				logout.setVisible(false);
-				ulabel.setVisible(false);
-				upload.setVisible(false);
-				signin.setVisible(true);
-				signup.setVisible(true);
-				getContentPane().validate();
-				getContentPane().repaint();
-				System.out.println("Bye, see you again!");
-
+				logoutActionPerformed(e);
 			}
 		});
 
@@ -390,13 +381,32 @@ public class MFwindows extends JFrame implements Runnable {
 	 */
 	public void signinActionPerformed(ActionEvent e) {
 		new SigninGUI(mfcon);
+	}
+
+	/**
+	 * Log out action performed method
+	 * 
+	 * @param e
+	 *            the action event
+	 */
+	public void logoutActionPerformed(ActionEvent e) {
+		t.stop();
+		mfcon.setLogin(false);
+		ulabel.setVisible(false);
+		logout.setVisible(false);
+		upload.setVisible(false);
+		signin.setVisible(true);
+		signup.setVisible(true);
 		t = new Thread(this);
-		t.start();
+		getContentPane().validate();
+		getContentPane().repaint();
+		System.out.println("Bye, see you again!");
+
 	}
 
 	@Override
 	public void run() {
-		Font font1 = new Font("Dialog", Font.BOLD, 14);
+		// Font font1 = new Font("Dialog", Font.BOLD, 14);
 		while (!mfcon.isLogin()) {
 			try {
 				Thread.sleep(1);
@@ -407,7 +417,7 @@ public class MFwindows extends JFrame implements Runnable {
 		}
 		signin.setVisible(false);
 		signup.setVisible(false);
-		
+
 		try {
 			ulabel = new JLabel("Hello " + mfcon.getUserName());
 		} catch (RemoteException e1) {
@@ -417,7 +427,7 @@ public class MFwindows extends JFrame implements Runnable {
 		ulabel.setFont(new Font("sans-serif", Font.BOLD, 21));
 		ulabel.setBounds(900, 30, 280, 25);
 		topPanel.add(ulabel);
-		ulabel.setVisible(true);
+		// ulabel.setVisible(true);
 		logout.setVisible(true);
 		upload.setVisible(true);
 		getContentPane().validate();

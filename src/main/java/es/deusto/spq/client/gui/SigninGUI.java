@@ -126,6 +126,9 @@ public class SigninGUI extends JFrame {
 				System.out.println("User account or password error!");
 			}
 		}
+		if (!MFwindows.t.isAlive()) {
+			MFwindows.t.start();
+		}
 		return b;
 	}
 
