@@ -196,8 +196,8 @@ public class MFwindows extends JFrame implements Runnable {
 			}
 		});
 
-		scrollpane = new JScrollPane(tunelist, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollpane = new JScrollPane(tunelist, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollpane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
 		tunelist.setBackground(new Color(240, 248, 255));
 		signup = new JButton("Sgin up");
@@ -308,6 +308,7 @@ public class MFwindows extends JFrame implements Runnable {
 		t.start();
 	}
 
+	@Override
 	public void run() {
 		Font font1 = new Font("Dialog", Font.BOLD, 14);
 		while (!mfcon.isLogin()) {
@@ -351,9 +352,10 @@ public class MFwindows extends JFrame implements Runnable {
 				upload.setVisible(false);
 				signin.setVisible(true);
 				signup.setVisible(true);
-				System.out.println("Bye, see you again!");
 				getContentPane().validate();
 				getContentPane().repaint();
+				System.out.println("Bye, see you again!");
+				
 			}
 		});
 
@@ -364,12 +366,10 @@ public class MFwindows extends JFrame implements Runnable {
 				// TODO Auto-generated method stub
 				// if (mfcon.isLogin())
 				System.out.println("Deleting...");
-				String[] s = tunelist.getSelectedValue().toString().split(" ");
-				System.out.println(s[1]);
-				String first = String.valueOf(s[2].toString().substring(1, 2));
-				String num = first.toString();
-				int num2 = Integer.parseInt(num);
-				tune.remove(num2);
+				int index = tunelist.getSelectedIndex();
+				if (index >= 0) {
+					tune.removeElementAt(index);
+				}
 			}
 		});
 
@@ -395,6 +395,7 @@ public class MFwindows extends JFrame implements Runnable {
 			}
 		});
 		editlabel.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("Loanding favorite songs");

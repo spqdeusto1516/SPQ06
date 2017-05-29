@@ -3,8 +3,6 @@
  */
 package es.deusto.spq.client.remote;
 
-import java.io.File;
-
 /**
  * @class MFManager.java
  * @author xian

@@ -153,11 +153,13 @@ public class MFServer extends UnicastRemoteObject implements IMFServer {
 		return mfdao.searchSong(keyword);
 	}
 
+	@Override
 	public List<String> loadFavoriteSongs() throws RemoteException {
 		// TODO Auto-generated method stub
 		return mfdao.loadFavoriteSongs();
 	}
 	
+	@Override
 	public void registerFavoriteSong(String nombre, String artista) throws RemoteException {
 		// TODO Auto-generated method stub
 		Cancionfavorita can = new Cancionfavorita(nombre, artista);

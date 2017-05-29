@@ -18,7 +18,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 //import org.slf4j.Logger;
@@ -63,6 +62,7 @@ public class RMITest {
 	public static void setUpBeforeClass() throws Exception {
 		// Launch the RMI registry
 		class RMIRegistryRunnable implements Runnable {
+			@Override
 			public void run() {
 				try {
 					java.rmi.registry.LocateRegistry.createRegistry(1099);
@@ -84,6 +84,7 @@ public class RMITest {
 
 		class RMIServerRunnable implements Runnable {
 
+			@Override
 			public void run() {
 				logger.info("Test RMI simulation");
 				logger.info("**************: " + cwd);
@@ -155,7 +156,7 @@ public class RMITest {
 
 	@Test
 	@PerfTest(invocations = 100, threads = 10)
-	@Required(max = 1000, average = 50)
+	@Required(max = 500, average = 50, throughput = 20)
 	// @Ignore
 	public void testLoadSong() throws RemoteException {
 
@@ -170,7 +171,7 @@ public class RMITest {
 
 	@Test
 	@PerfTest(invocations = 100, threads = 10)
-	@Required(max = 500, average = 50)
+	@Required(max = 500, average = 50, throughput = 20)
 	public void testSignUp() throws Exception {
 		logger.info("Starting SignUp PerformanceTest " + iterationSignUpTest++);
 		boolean b = false;

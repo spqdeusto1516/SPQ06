@@ -7,7 +7,6 @@ import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import es.deusto.spq.server.data.Cancion;
@@ -56,6 +55,7 @@ public class MFdao implements IMFdao {
 		return b;
 	}
 
+	@Override
 	public boolean checkUser(Usuario user) {
 		boolean b = false;
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -83,6 +83,7 @@ public class MFdao implements IMFdao {
 		return b;
 	}
 
+	@Override
 	public boolean loginUser(String email, String password) {
 		boolean b = false;
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -223,6 +224,7 @@ public class MFdao implements IMFdao {
 		return listSong;
 	}
 
+	@Override
 	public void storeFavoriteSong(Cancionfavorita cf) {
 		// TODO Auto-generated method stub
 		this.storeObject(cf);

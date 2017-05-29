@@ -4,8 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import es.deusto.spq.server.data.Usuario;
-
 public interface IMFServer extends Remote {
 
 	String sayMessage(String login, String password, String message) throws RemoteException;

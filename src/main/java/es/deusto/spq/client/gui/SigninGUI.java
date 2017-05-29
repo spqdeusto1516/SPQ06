@@ -102,6 +102,7 @@ public class SigninGUI extends JFrame {
 		btnCancel.setBounds(240, 300, 130, 30);
 		btnCancel.setFont(font);
 		contentPane.add(btnCancel);
+		
 	}
 
 	protected boolean acceptActionPerformed(ActionEvent e) {

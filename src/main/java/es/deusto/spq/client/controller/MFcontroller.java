@@ -67,8 +67,15 @@ public class MFcontroller {
 	 * @param args
 	 * @throws RemoteException
 	 */
-	public static void main(String[] args) throws RemoteException {
-		new MFcontroller(args);
+	public static void main(String[] args) {
+
+		try {
+			new MFcontroller(args);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

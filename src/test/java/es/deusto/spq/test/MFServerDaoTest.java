@@ -9,25 +9,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
-
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
 
-import es.deusto.spq.client.controller.MFcontroller;
 import es.deusto.spq.server.IMFServer;
 import es.deusto.spq.server.MFServer;
 import es.deusto.spq.server.dao.IMFdao;
 import es.deusto.spq.server.dao.MFdao;
-import es.deusto.spq.server.data.Cancion;
 import es.deusto.spq.server.data.Usuario;
 import junit.framework.JUnit4TestAdapter;
 
